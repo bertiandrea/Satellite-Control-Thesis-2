@@ -17,7 +17,7 @@ LOG_DISPLAY = ["Reward_policy/phi_mean", "Reward_policy/energy_mean",
 
 LOG_VAL = [1e1, 1e3, 1e2, 1e2]
 
-def load_data(files, method="mean"):
+def load_data(files, method):
     step_data = defaultdict(lambda: defaultdict(list))
     for f in files:
         try:
@@ -44,7 +44,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", type=str, required=True)
     ap.add_argument("--training", action="store_true")
-    ap.add_argument("--method", choices=["median", "mean"], default="mean")
+    ap.add_argument("--method", choices=["median", "mean"], required=True)
     ap.add_argument("--outdir", default="_img/plots_reward_policy")
     args = ap.parse_args()
 
